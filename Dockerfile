@@ -1,5 +1,5 @@
 #ARG BCI_IMAGE=registry.suse.com/bci/bci-micro
-ARG GO_IMAGE=rancher/hardened-build-base:v1.22.4b2
+ARG GO_IMAGE=rancher/hardened-build-base:v1.23.2b1
 
 # Image that provides cross compilation tooling.
 FROM --platform=$BUILDPLATFORM rancher/mirrored-tonistiigi-xx:1.3.0 as xx
@@ -23,7 +23,7 @@ RUN set -x && \
 FROM base-builder as metrics-builder
 ARG PKG="github.com/kubernetes-incubator/metrics-server"
 ARG SRC="github.com/kubernetes-sigs/metrics-server"
-ARG TAG=v0.7.1
+ARG TAG=v0.7.2
 ARG TARGETARCH
 RUN git clone --depth=1 https://${SRC}.git $GOPATH/src/${PKG}
 WORKDIR $GOPATH/src/${PKG}
